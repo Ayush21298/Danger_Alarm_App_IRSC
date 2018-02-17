@@ -12,6 +12,8 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -142,6 +144,9 @@ public class LocationService extends Service implements
             diff = TimeUnit.MILLISECONDS.toMinutes(diff);
             MainActivity.time.setText("Total Time: " + diff + " minutes");
             Toast toast = Toast.makeText(this, "DANGER !!!", Toast.LENGTH_SHORT);
+            ViewGroup group = (ViewGroup) toast.getView();
+            TextView messageTextView = (TextView) group.getChildAt(0);
+            messageTextView.setTextSize(32);
             if (speed > 0.0) {
                 MainActivity.speed.setText("Current speed: " + new DecimalFormat("#.##").format(speed) + " km/hr");
                 MainActivity.speedometer.speedTo((float)speed);

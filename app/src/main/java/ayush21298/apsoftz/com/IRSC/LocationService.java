@@ -1,8 +1,13 @@
 package ayush21298.apsoftz.com.IRSC;
 
+import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Intent;
 import android.location.Location;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -25,6 +30,9 @@ public class LocationService extends Service implements
         LocationListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
+
+    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
 
     private static final long INTERVAL = 1000 * 2;
     private static final long FASTEST_INTERVAL = 1000 * 1;
@@ -130,10 +138,21 @@ public class LocationService extends Service implements
             if (speed > 0.0) {
                 MainActivity.speed.setText("Current speed: " + new DecimalFormat("#.##").format(speed) + " km/hr");
                 MainActivity.speedometer.speedTo((float)speed);
+                r.stop();
+                if(speed > 10.0){
+                    new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
+                    r.play();
+                }
             }
             else {
                 MainActivity.speed.setText(".......");
                 MainActivity.speedometer.speedTo((float)(0.0));
+//                MediaPlayer mp = new MediaPlayer();
+//                mp.reset();
+//                mp.setDataSource(notificationsPath+ (String) apptSounds.getSelectedItem());
+//                mp.prepare();
+//                mp.start();
+                r.stop();
             }
 
             MainActivity.dist.setText(new DecimalFormat("#.###").format(distance) + " Km's.");

@@ -149,6 +149,7 @@ public class LocationService extends Service implements
                 if(speed > 10.0){
 //                    new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
                     r.play();
+                    toast.show();
 //                    toast.show();
                 }
                 else {
@@ -168,7 +169,7 @@ public class LocationService extends Service implements
 //                mp.prepare();
 //                mp.start();
 //                r.play();
-                toast.show();
+//                toast.show();
                 r.stop();
             }
 

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonRequestPermission;
 //    private int STORAGE_PERMISSION_CODE = 23;
     public static final int MULTIPLE_PERMISSIONS = 10; // code you want.
-    SpeedView speedometer;
+    static SpeedView speedometer;
 
     String[] permissions= new String[]{
             Manifest.permission.ACCESS_NETWORK_STATE,
@@ -117,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
         buttonRequestPermission = (Button) findViewById(R.id.buttonRequestPermission);
 
-        speedometer = (SpeedView)findViewById(R.id.speedView);
+//        speedometer = (SpeedView)findViewById(R.id.speedView);
 
-        speedometer.speedTo(50);
+//        speedometer.speedTo(10);
 
 
         buttonRequestPermission.setOnClickListener(new View.OnClickListener() {
@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         dist = (TextView) findViewById(R.id.distancetext);
         time = (TextView) findViewById(R.id.timetext);
         speed = (TextView) findViewById(R.id.speedtext);
+        speedometer = (SpeedView)findViewById(R.id.speedView);
 
         start = (Button) findViewById(R.id.start);
         pause = (Button) findViewById(R.id.pause);

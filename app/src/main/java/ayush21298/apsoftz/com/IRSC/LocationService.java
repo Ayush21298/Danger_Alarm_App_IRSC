@@ -127,8 +127,10 @@ public class LocationService extends Service implements
             long diff = MainActivity.endTime - MainActivity.startTime;
             diff = TimeUnit.MILLISECONDS.toMinutes(diff);
             MainActivity.time.setText("Total Time: " + diff + " minutes");
-            if (speed > 0.0)
+            if (speed > 0.0) {
                 MainActivity.speed.setText("Current speed: " + new DecimalFormat("#.##").format(speed) + " km/hr");
+                MainActivity.speedometer.speedTo((float)speed);
+            }
             else
                 MainActivity.speed.setText(".......");
 

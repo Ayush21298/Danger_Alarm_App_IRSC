@@ -12,6 +12,7 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -140,6 +141,7 @@ public class LocationService extends Service implements
             long diff = MainActivity.endTime - MainActivity.startTime;
             diff = TimeUnit.MILLISECONDS.toMinutes(diff);
             MainActivity.time.setText("Total Time: " + diff + " minutes");
+            Toast toast = Toast.makeText(this, "DANGER !!!", Toast.LENGTH_SHORT);
             if (speed > 0.0) {
                 MainActivity.speed.setText("Current speed: " + new DecimalFormat("#.##").format(speed) + " km/hr");
                 MainActivity.speedometer.speedTo((float)speed);
@@ -147,6 +149,7 @@ public class LocationService extends Service implements
                 if(speed > 10.0){
 //                    new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
                     r.play();
+//                    toast.show();
                 }
                 else {
                     r.stop();
@@ -155,7 +158,8 @@ public class LocationService extends Service implements
             else {
                 MainActivity.speed.setText(".......");
                 MainActivity.speedometer.speedTo((float)(0.0));
-//                new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
+//                AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).create();
+//                dialog.show();
 
 
 //                MediaPlayer mp = new MediaPlayer();
@@ -164,6 +168,7 @@ public class LocationService extends Service implements
 //                mp.prepare();
 //                mp.start();
 //                r.play();
+                toast.show();
                 r.stop();
             }
 

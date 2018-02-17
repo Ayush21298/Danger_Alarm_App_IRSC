@@ -131,8 +131,10 @@ public class LocationService extends Service implements
                 MainActivity.speed.setText("Current speed: " + new DecimalFormat("#.##").format(speed) + " km/hr");
                 MainActivity.speedometer.speedTo((float)speed);
             }
-            else
+            else {
                 MainActivity.speed.setText(".......");
+                MainActivity.speedometer.speedTo((float)(0.0));
+            }
 
             MainActivity.dist.setText(new DecimalFormat("#.###").format(distance) + " Km's.");
 

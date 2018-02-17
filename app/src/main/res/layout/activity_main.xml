@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@android:color/black"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/distancetext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="Total Distance:"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/speedtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="Instantaneous Speed:"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/timetext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="Total Time:"
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        android:orientation="horizontal">
+
+        <com.github.anastr.speedviewlib.SpeedView
+            android:id="@+id/speedView"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" />
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_below="@id/speedView"
+            android:background="@android:color/white"
+            android:paddingBottom="0dp"
+            android:text="Start Calculating" />
+
+        <Button
+            android:id="@+id/pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/speedView"
+            android:background="@android:color/white"
+            android:text="Pause"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@id/pause"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:layout_below="@id/speedView"
+            android:background="@android:color/white"
+            android:text="Stop"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request Permissions"
+        android:id="@+id/buttonRequestPermission"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</FrameLayout>

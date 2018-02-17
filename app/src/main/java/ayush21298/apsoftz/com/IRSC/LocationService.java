@@ -31,8 +31,11 @@ public class LocationService extends Service implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
-    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+//    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+//    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+
+    Uri notification;
+    Ringtone r;
 
     private static final long INTERVAL = 1000 * 2;
     private static final long FASTEST_INTERVAL = 1000 * 1;
@@ -130,6 +133,8 @@ public class LocationService extends Service implements
     //The live feed of Distance and Speed are being set in the method below .
     private void updateUI() {
         if (MainActivity.p == 0) {
+            notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+            r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             distance = distance + (lStart.distanceTo(lEnd) / 1000.00);
             MainActivity.endTime = System.currentTimeMillis();
             long diff = MainActivity.endTime - MainActivity.startTime;
@@ -138,20 +143,27 @@ public class LocationService extends Service implements
             if (speed > 0.0) {
                 MainActivity.speed.setText("Current speed: " + new DecimalFormat("#.##").format(speed) + " km/hr");
                 MainActivity.speedometer.speedTo((float)speed);
-                r.stop();
+//                r.stop();
                 if(speed > 10.0){
-                    new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
+//                    new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
                     r.play();
+                }
+                else {
+                    r.stop();
                 }
             }
             else {
                 MainActivity.speed.setText(".......");
                 MainActivity.speedometer.speedTo((float)(0.0));
+//                new AlertDialog.Builder(this).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
+
+
 //                MediaPlayer mp = new MediaPlayer();
 //                mp.reset();
 //                mp.setDataSource(notificationsPath+ (String) apptSounds.getSelectedItem());
 //                mp.prepare();
 //                mp.start();
+//                r.play();
                 r.stop();
             }
 

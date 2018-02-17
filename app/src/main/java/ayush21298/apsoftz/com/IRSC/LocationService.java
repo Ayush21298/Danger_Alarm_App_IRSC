@@ -136,7 +136,7 @@ public class LocationService extends Service implements
     //The live feed of Distance and Speed are being set in the method below .
     private void updateUI() {
         if (MainActivity.p == 0) {
-            notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+            notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
             r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             distance = distance + (lStart.distanceTo(lEnd) / 1000.00);
             MainActivity.endTime = System.currentTimeMillis();

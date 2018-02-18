@@ -24,8 +24,8 @@ while True:
     for (x,y,w,h) in cars:
         cv2.rectangle(frames,(x,y),(x+w,y+h),(0,0,255),2)
  
-   # Display frames in a window 
-   cv2.imshow('video2', frames)
+    # Display frames in a window 
+    cv2.imshow('video2', frames)
      
     # Wait for Esc key to stop
     if cv2.waitKey(33) == 27:
